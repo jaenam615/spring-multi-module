@@ -1,0 +1,10 @@
+plugins {
+    id 'java-library'
+}
+
+
+dependencies {
+    implementation(project(":modules:domain"))
+    implementation("org.springframework.boot:spring-boot-starter-web")
+    // 필요한 의존성 추가
+}

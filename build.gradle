@@ -1,0 +1,32 @@
+plugins {
+    id 'java-library'  // Java 라이브러리 플러그인
+    id 'org.springframework.boot' version '3.3.5' apply false
+    id 'io.spring.dependency-management' version '1.1.0' apply false
+    id "co.uzzu.dotenv.gradle" version "4.0.0"
+}
+
+allprojects {
+    group = 'com.example'
+    version = '1.0.0'
+
+    repositories {
+        mavenCentral()
+    }
+}
+
+subprojects {
+    apply plugin: 'java-library'  // Java 라이브러리 플러그인 적용
+    apply plugin: 'io.spring.dependency-management'
+
+    dependencies {
+        implementation platform('org.springframework.boot:spring-boot-dependencies:3.3.5')
+        implementation 'org.springframework.boot:spring-boot-starter-web'
+        implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+        implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+        implementation 'org.springframework.boot:spring-boot-starter-validation'
+    }
+
+    tasks.withType(Test) {
+        useJUnitPlatform()
+    }
+}
